@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.automation'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.microsoft.playwright/playwright
+    implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.44.0'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.15.0'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
+    implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.15.0'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    //testImplementation group: 'org.testng', name: 'testng', version: '7.7.0'
+}
+
+test {
+    //useJUnitPlatform()
+    //exclude '**/*'
+    //useTestNG()
+}
+
+compileTestJava {
+    options.encoding = "UTF-8"
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task e2eTest(type: Test) {
+    useTestNG()
+    println("====Running e2eTest====")
+    //systemProperties System.getProperties() //Passing the provided SystemProperties down to code.
+
+    jvmArgs(["-Ddataproviderthreadcount=1", "-Dcucumber.filter.tags=@Login"])
+    include 'com/automation/runner/CucumberRunner.class'
+    scanForTestClasses = false
+    testLogging.showStandardStreams = true
+}
