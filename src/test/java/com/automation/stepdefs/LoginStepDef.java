@@ -1,5 +1,6 @@
 package com.automation.stepdefs;
 
+import com.automation.hooks.Hooks;
 import com.automation.pages.LoginPage;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
@@ -13,28 +14,13 @@ import io.cucumber.java.en.When;
 
 public class LoginStepDef {
 
-    private Playwright playwright;
-    private Browser browser;
-    private Page page;
+    private final Page page;
     private LoginPage loginPage;
 
-    @Before
-    public void setUp() {
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false)
-        );
-        page = browser.newPage();
-    }
-
-    @After
-    public void tearDown() {
-        if (page != null) {
-            // close sessions
-            page.close();
-            browser.close();
-            playwright.close();
-        }
+    // Constructor to accept Page instance
+    public LoginStepDef(Hooks hooks) {
+        this.page = hooks.getPage();
+        this.loginPage = new LoginPage(page);
     }
 
     @Given("I am on OpenCart login page")
