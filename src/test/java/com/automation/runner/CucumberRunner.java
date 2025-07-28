@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"com.automation.stepdefs"},
+        glue = {"com.automation.stepdefs", "com.automation.hooks"},
         tags = "@Login",
         plugin = {"pretty", "html:target/cucumber-reports", "json:target/cucumber.json"},
         monochrome = true,
@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeClass;
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
     @BeforeClass
-    public void beforetest() {
+    public void beforeTest() {
         System.out.println("runner.CucumberRunner - code can be executed at the beginning the execution");
     }
 
@@ -26,7 +26,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
     }
 
     @Override
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] scenarios() {
         return super.scenarios();
     }

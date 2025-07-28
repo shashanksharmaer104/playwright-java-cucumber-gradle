@@ -16,22 +16,22 @@ public class Hooks {
     @Before
     public void setUp() {
         // Use the static method to get the browser
-        browser = BrowserFactory.getBrowser("firefox");
+        browser = BrowserFactory.getBrowser("chrome");
         context = browser.newContext();
-        page = context.newPage();
+        this.page = context.newPage();
     }
 
     // Provide access for DI
     public Page getPage() {
-        return page;
+        return this.page;
     }
 
     @After
     public void tearDown() {
-        if (page != null) {
-            page.close();
-            context.close();
-            browser.close();
+        if (this.page != null) {
+            this.page.close();
+            this.context.close();
+            this.browser.close();
         }
     }
 }
