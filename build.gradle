@@ -39,7 +39,10 @@ configurations {
 task e2eTest(type: Test) {
     useTestNG()
     println("====Running e2eTest====")
-    jvmArgs(["-Ddataproviderthreadcount=1", "-Dcucumber.filter.tags=@Login"])
+    jvmArgs(["-Ddataproviderthreadcount=1",
+             "-Dcucumber.filter.tags=@Login",
+             "-Dbrowser=chromium"
+    ])
     include 'com/automation/runner/CucumberRunner.class'
     scanForTestClasses = false
     testLogging.showStandardStreams = true

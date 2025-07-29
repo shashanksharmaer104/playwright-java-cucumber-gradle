@@ -16,7 +16,8 @@ public class Hooks {
     @Before
     public void setUp() {
         // Use the static method to get the browser
-        browser = BrowserFactory.getBrowser("chrome");
+        final String browserName = System.getProperty("browser", "chrome"); // Default to chrome if not specified
+        browser = BrowserFactory.getBrowser(browserName);
         context = browser.newContext();
         this.page = context.newPage();
     }
