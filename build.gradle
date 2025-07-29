@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/com.microsoft.playwright/playwright
-    implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.48.0'
+    implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.49.0'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
     implementation("io.cucumber:cucumber-java:7.15.0")
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
@@ -23,7 +23,7 @@ dependencies {
 test {
     //useJUnitPlatform()
     //exclude '**/*'
-    //useTestNG()
+    useTestNG()
 }
 
 compileTestJava {
@@ -39,8 +39,6 @@ configurations {
 task e2eTest(type: Test) {
     useTestNG()
     println("====Running e2eTest====")
-    //systemProperties System.getProperties() //Passing the provided SystemProperties down to code.
-
     jvmArgs(["-Ddataproviderthreadcount=1", "-Dcucumber.filter.tags=@Login"])
     include 'com/automation/runner/CucumberRunner.class'
     scanForTestClasses = false
