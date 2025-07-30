@@ -1,0 +1,10 @@
+# Ignore IDE-specific files
+.idea/
+.vscode/
+
+# Ignore build output directory
+.gradle/
+build/
+
+# Ignore build artifacts
+target/
