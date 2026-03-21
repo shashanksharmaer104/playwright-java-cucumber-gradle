@@ -1,0 +1,62 @@
+{
+  "name": "q_ide_default",
+  "description": "Default agent configuration",
+  "prompt": "",
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "disabled": false,
+      "timeout": 90000,
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  },
+  "tools": [
+    "fs_read",
+    "execute_bash",
+    "fs_write",
+    "report_issue",
+    "use_aws",
+    "@playwright"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "fs_read",
+    "report_issue",
+    "use_aws",
+    "execute_bash",
+    "fs_write",
+    "@playwright/browser_close",
+    "@playwright/browser_resize",
+    "@playwright/browser_console_messages",
+    "@playwright/browser_install",
+    "@playwright/browser_press_key",
+    "@playwright/browser_type",
+    "@playwright/browser_navigate",
+    "@playwright/browser_navigate_back",
+    "@playwright/browser_click",
+    "@playwright/browser_drag",
+    "@playwright/browser_hover",
+    "@playwright/browser_select_option",
+    "@playwright/browser_tabs"
+  ],
+  "toolsSettings": {
+    "use_aws": {
+      "preset": "readOnly"
+    },
+    "execute_bash": {
+      "preset": "readOnly"
+    }
+  },
+  "resources": [
+    "file://AmazonQ.md",
+    "file://README.md",
+    "file://.amazonq/rules/**/*.md"
+  ],
+  "hooks": {
+    "agentSpawn": [],
+    "userPromptSubmit": []
+  },
+  "useLegacyMcpJson": true
+}
