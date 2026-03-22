@@ -1,4 +1,7 @@
 package com.automation.pages;
 
-public class AbstractComponent {
+public abstract class AbstractComponent {
+
+    public abstract boolean isDisplayed();
+
 }

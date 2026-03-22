@@ -1,4 +1,4 @@
-package com.automation.pages;
+package com.automation.pages.loginpage;
 
 import com.microsoft.playwright.Page;
 
@@ -6,32 +6,16 @@ public class LoginPage {
 
     private Page page;
 
-    private final String usernameTxtBox = "//input[@id='input-email']";
-    private final String passwordTxtBox = "//input[@id='input-password']";
-    private final String submitBtn = "//input[@id='input-password']";
+    private ReturningCustomers returningCustomers;
 
     //Constructor
     public LoginPage(final Page page) {
         this.page = page;
+        this.returningCustomers = new ReturningCustomers(page);
     }
 
-    public void enterUsername(String username) {
-        page.fill(usernameTxtBox, username);
+    public ReturningCustomers getReturningCustomers() {
+        return this.returningCustomers;
     }
-
-    public void enterPassword(String password) {
-        page.fill(passwordTxtBox, password);
-    }
-
-    public void clickSubmit() {
-        page.click(submitBtn);
-    }
-
-    public void login(String username, String password) {
-        enterUsername(username);
-        enterPassword(password);
-        clickSubmit();
-    }
-
 
 }
