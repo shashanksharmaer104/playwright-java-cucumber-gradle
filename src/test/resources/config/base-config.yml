@@ -1,0 +1,7 @@
+ui-config:
+  browser: 'chrome'
+  headless: false
+  full_screen: true
+
+api-config:
+  relaxed_https: true

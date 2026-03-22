@@ -1,7 +1,7 @@
 package com.automation.stepdefs;
 
 import com.automation.hooks.Hooks;
-import com.automation.pages.LoginPage;
+import com.automation.pages.loginpage.LoginPage;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,15 +23,18 @@ public class LoginStepDef {
         page.navigate("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
         loginPage = new LoginPage(page);
     }
+
     @Given("I have entered a valid username and password")
     public void i_have_entered_a_valid_username_and_password() {
-        loginPage.enterUsername("qatestertest@gmail.com");
-        loginPage.enterPassword("Test@123");
+        loginPage.getReturningCustomers().enterEmail("qatestertest@gmail.com");
+        loginPage.getReturningCustomers().enterPassword("Test@123");
     }
+
     @When("I click on the login button")
     public void i_click_on_the_login_button() {
-        loginPage.clickSubmit();
+        loginPage.getReturningCustomers().clickSubmitBtn();
     }
+
     @Then("I should be logged in successfully")
     public void i_should_be_logged_in_successfully() {
         System.out.println("Test");
