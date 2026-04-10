@@ -78,3 +78,5 @@ This project is configured to support the **Model Context Protocol (MCP)** using
 *   **Hooks:**
     *   The `Hooks` class manages the browser lifecycle (`setUp` and `tearDown`).
     *   Browser type is determined by the `browser` system property (defaults to `chrome` if not specified).
+
+
